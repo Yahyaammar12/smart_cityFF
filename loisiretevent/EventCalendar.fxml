@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import java.time.LocalDate?>
+<?import javafx.scene.paint.Color?>
+
+<AnchorPane prefHeight="600.0" prefWidth="800.0"
+            style="-fx-background-color: #f9f9f9;"
+            xmlns="http://javafx.com/javafx/20.0.1"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="controllers.eventetloisir.EventCalendarController">
+
+    <!-- ✅ Sidebar (Left-aligned and Full Height) -->
+    <AnchorPane fx:id="sidebar" prefWidth="200.0" prefHeight="600.0" style="-fx-background-color: #2C3E50;">
+        <fx:include source="/Layouts/UserSidebar.fxml"/>
+    </AnchorPane>
+
+    <!-- ✅ Main Content (Anchored to the right of the sidebar) -->
+    <AnchorPane layoutX="200.0" prefWidth="600.0" prefHeight="600.0">
+        <VBox spacing="10" style="-fx-padding: 20px;">
+
+            <!-- 📅 Header -->
+            <HBox spacing="10">
+                <Label text="📅 Event Calendar"
+                       style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+                <DatePicker fx:id="monthPicker" onAction="#loadEventsForMonth"/>
+            </HBox>
+
+            <!-- 📋 Event Table -->
+            <TableView fx:id="eventTable" prefHeight="200">
+                <columns>
+                    <TableColumn text="Event Name" fx:id="colEventName" prefWidth="150"/>
+                    <TableColumn text="Description" fx:id="colDescription" prefWidth="250"/>
+                    <TableColumn text="Date" fx:id="colDate" prefWidth="100"/>
+                    <TableColumn text="Location" fx:id="colLocation" prefWidth="150"/>
+                </columns>
+            </TableView>
+
+            <!-- 📅 Calendar Grid -->
+            <GridPane fx:id="calendarGrid" prefHeight="350"
+                      style="-fx-border-color: #ccc; -fx-padding: 10px;"/>
+        </VBox>
+    </AnchorPane>
+
+</AnchorPane>

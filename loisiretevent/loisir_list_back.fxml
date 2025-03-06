@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="600.0" prefWidth="850.0"
+            style="-fx-background-color: linear-gradient(to right, #6dd5ed, #2193b0);"
+            xmlns="http://javafx.com/javafx/20.0.1"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="controllers.eventetloisir.LoisirListControllerback">
+
+    <!-- ✅ Sidebar (Fixed to the Left) -->
+    <AnchorPane fx:id="sidebar" prefWidth="200.0" prefHeight="600.0"
+                style="-fx-background-color: #2C3E50;">
+        <fx:include source="/Layouts/AdminSidebar.fxml"/>
+    </AnchorPane>
+
+    <!-- ✅ Main Content (Better Spacing & Layout) -->
+    <AnchorPane layoutX="220.0" prefWidth="600.0" prefHeight="580.0" style="-fx-background-radius: 12; -fx-padding: 10;">
+
+        <VBox alignment="CENTER" spacing="15" style="-fx-padding: 15; -fx-background-radius: 12; -fx-background-color: rgba(255, 255, 255, 0.9);">
+
+            <!-- 🏞 Page Title -->
+            <Label style="-fx-font-size: 22; -fx-font-weight: bold; -fx-text-fill: #2C3E50;"
+                   text="🏞 Catalogue des Loisirs"/>
+
+            <!-- 🔍 Search & Sorting Section -->
+            <VBox spacing="10" style="-fx-padding: 10;">
+                <HBox alignment="CENTER" spacing="10">
+                    <TextField fx:id="searchFieldName" promptText="🔍 Nom" prefWidth="130"/>
+                    <TextField fx:id="searchFieldType" promptText="🔍 Type" prefWidth="120"/>
+                    <TextField fx:id="searchFieldLocation" promptText="📍 Localisation" prefWidth="130"/>
+                    <Button fx:id="searchButton" text="🔎" onAction="#searchLoisirs"
+                            style="-fx-background-radius: 8;"/>
+                </HBox>
+
+                <HBox alignment="CENTER" spacing="10">
+                    <ComboBox fx:id="sortComboBox" promptText="Trier par" prefWidth="120"/>
+                    <CheckBox fx:id="ascendingCheckBox" text="📈 Ascendant"/>
+                    <Button fx:id="sortButton" onAction="#sortLoisirs" text="🔀 Trier"
+                            style="-fx-background-color: #4caf50; -fx-text-fill: white;"/>
+                </HBox>
+            </VBox>
+
+            <!-- 📜 Scrollable List (Reduced Height for Better UI) -->
+            <ScrollPane fitToWidth="true" prefHeight="400" prefWidth="580.0"
+                        style="-fx-background-color: transparent;"
+                        styleClass="card" stylesheets="@../styles.css">
+                <VBox fx:id="loisirContainer" spacing="15" style="-fx-background-color: transparent; -fx-padding: 15;"/>
+            </ScrollPane>
+
+            <!-- 📤 Buttons (Moved CSV Export Up for Better Visibility) -->
+            <HBox alignment="CENTER" spacing="15">
+                <Button fx:id="exportCsvButton" onAction="#exportToCSV"
+                        style="-fx-background-color: #ff9800; -fx-text-fill: white; -fx-border-radius: 8; -fx-padding: 6 16;"
+                        text="📤 Exporter CSV"/>
+
+            </HBox>
+
+        </VBox>
+    </AnchorPane>
+
+</AnchorPane>

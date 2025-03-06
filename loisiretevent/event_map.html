@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leaflet Map with Routing</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.css" />
+    <script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.js"></script>
+
+    <style>
+        body, html { margin: 0; padding: 0; height: 100%; width: 100%; }
+        #map { height: 100%; width: 100%; }
+    </style>
+</head>
+<body>
+<div id="map"></div>
+
+<script>
+    // Declare variables globally
+    var map;
+    var markers = []; // Simple array to store markers
+    var routingControl; // For routing
+
+    function initMap() {
+        map = L.map('map').setView([36.8065, 10.1815], 7); // Default view (Tunisia)
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        // Ensure map resizes properly
+        map.invalidateSize();
+    }
+
+    function addMarker(lat, lon, location) {
+        if (typeof lat === 'number' && typeof lon === 'number' && !isNaN(lat) && !isNaN(lon)) {
+            var marker = L.marker([lat, lon]).bindPopup(`<b>${location}</b>`);
+            marker.addTo(map);
+            markers.push(marker);
+            map.invalidateSize(); // Refresh map after adding marker
+        } else {
+            console.error("Invalid coordinates: ", lat, lon, location);
+        }
+    }
+
+    function clearMarkers() {
+        markers.forEach(marker => map.removeLayer(marker));
+        markers = []; // Reset the markers array
+        map.invalidateSize(); // Refresh map after clearing
+        if (routingControl) {
+            map.removeControl(routingControl); // Remove routing if exists
+            routingControl = null;
+        }
+    }
+
+    function addRoute(startLat, startLon, endLat, endLon) {
+        if (routingControl) {
+            map.removeControl(routingControl);
+        }
+        routingControl = L.Routing.control({
+            waypoints: [
+                L.latLng(startLat, startLon),
+                L.latLng(endLat, endLon)
+            ],
+            routeWhileDragging: true,
+            show: true
+        }).addTo(map);
+        map.invalidateSize(); // Refresh map after adding route
+    }
+
+    // Initialize map when the page loads
+    window.onload = function() {
+        initMap();
+    };
+
+    // Expose functions to JavaFX
+    window.addMarker = addMarker;
+    window.clearMarkers = clearMarkers;
+    window.addRoute = addRoute;
+</script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="controllers.eventetloisir.EditEventController" prefHeight="500.0" prefWidth="600.0"
+            style="-fx-background-color: linear-gradient(to right, #6dd5ed, #2193b0);">
+
+    <VBox alignment="CENTER" spacing="15" layoutX="50" layoutY="50"
+          style="-fx-background-color: white; -fx-padding: 20; -fx-border-radius: 10; -fx-background-radius: 10; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 10, 0, 0, 5);"
+          prefWidth="500" prefHeight="400">
+        <Label text="✏ Modifier l'Événement" style="-fx-font-size: 20px; -fx-font-weight: bold;"/>
+
+        <TextField fx:id="nomField" promptText="Nom de l'événement"/>
+        <TextArea fx:id="descriptionField" promptText="Description de l'événement"/>
+        <DatePicker fx:id="datePicker" promptText="Date"/>
+        <TextField fx:id="timeField" promptText="Heure (HH:MM)"/>
+        <TextField fx:id="locationField" promptText="Localisation"/>
+
+        <Button fx:id="updateEventButton" text="Mettre à jour" style="-fx-background-color: #ffcc00; -fx-text-fill: black; -fx-font-size: 14px; -fx-padding: 10;"/>
+        <Label fx:id="statusLabel" textFill="red"/>
+    </VBox>
+
+</AnchorPane>

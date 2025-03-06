@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.web.WebView?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.HBox?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/8"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="controllers.eventetloisir.MapController"
+            style="-fx-background-color: linear-gradient(to bottom, #87CEFA, #B0E0E6);">
+
+    <HBox alignment="center" prefWidth="800" prefHeight="600">
+        <VBox spacing="10" style="-fx-alignment: center; -fx-padding: 15;">
+            <!-- Use HBox to place buttons on the same line -->
+            <HBox alignment="CENTER" spacing="10">
+                <Button text="Refresh Map" onAction="#loadAllMarkers"
+                style="-fx-background-color: #0078D7; -fx-text-fill: white; -fx-font-size: 14px; -fx-padding: 10px; -fx-background-radius: 10px;"/>
+                <Button text="See Weather" fx:id="weatherButton" onAction="#showWeather"
+                        style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-size: 14px; -fx-padding: 10px; -fx-background-radius: 10px;"/>
+            </HBox>
+            <VBox style="-fx-background-color: white; -fx-border-radius: 10px; -fx-background-radius: 10px; -fx-padding: 15px; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 10, 0, 0, 5);">
+                <WebView fx:id="mapView" prefHeight="550" prefWidth="750"
+                         AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.topAnchor="0"/>
+            </VBox>
+        </VBox>
+    </HBox>
+
+</AnchorPane>

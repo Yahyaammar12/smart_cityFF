@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="600.0" prefWidth="800.0"
+            style="-fx-background-color: linear-gradient(to right, #6dd5ed, #2193b0);"
+            xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="controllers.eventetloisir.LoisirListController">
+
+    <!-- ✅ Sidebar (Left-aligned and Full Height) -->
+    <AnchorPane prefWidth="200.0" prefHeight="600.0" style="-fx-background-color: #2C3E50;">
+        <fx:include source="/Layouts/UserSidebar.fxml"/>
+    </AnchorPane>
+
+    <!-- ✅ Main Content Wrapper (Positioned to the right of the sidebar) -->
+    <AnchorPane layoutX="200.0" prefWidth="600.0" prefHeight="600.0">
+        <VBox alignment="CENTER" spacing="15" style="-fx-padding: 20;">
+
+            <!-- 🏞 Page Title -->
+            <Label style="-fx-font-size: 22; -fx-font-weight: bold; -fx-text-fill: #FFFFFF;"
+                   text="🏞 Catalogue des Loisirs"/>
+
+            <!-- 🔎 Search Section -->
+            <HBox alignment="CENTER" spacing="10">
+                <TextField fx:id="searchFieldName" prefHeight="35.0" prefWidth="197.0" promptText="🔍 Rechercher par nom"/>
+                <TextField fx:id="searchFieldType" prefHeight="35.0" prefWidth="171.0" promptText="🔍 Type"/>
+                <TextField fx:id="searchFieldLocation" prefWidth="167.0" promptText="📍 Localisation"/>
+            </HBox>
+
+            <!-- 🔀 Sorting Section -->
+            <HBox alignment="CENTER" spacing="10">
+                <ComboBox fx:id="sortComboBox" promptText="Trier par"/>
+                <CheckBox fx:id="ascendingCheckBox" text="📈 Ascendant"/>
+                <Button fx:id="searchButton" onAction="#searchLoisirs" text="🔎 Rechercher"
+                        style="-fx-background-color: #ffeb3b; -fx-text-fill: black;"/>
+                <Button fx:id="sortButton" onAction="#sortLoisirs" text="🔀 Trier"
+                        style="-fx-background-color: #4caf50; -fx-text-fill: white;"/>
+            </HBox>
+
+            <!-- 📜 Scrollable List -->
+            <ScrollPane fitToWidth="true" prefHeight="500" prefWidth="580.0" style="-fx-background-color: transparent;"
+                        styleClass="card" stylesheets="@../styles.css">
+                <VBox fx:id="loisirContainer" spacing="15" style="-fx-background-color: transparent; -fx-padding: 15;"
+                      styleClass="card" stylesheets="@../styles.css"/>
+            </ScrollPane>
+        </VBox>
+    </AnchorPane>
+
+</AnchorPane>
