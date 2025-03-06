@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="controllers.tourismeEtReclamation.EditTourismeController" prefHeight="400.0" prefWidth="500.0"
+            style="-fx-background-color: linear-gradient(to right, #FFDEE9, #B5FFFC);"> <!-- New background -->
+
+    <VBox alignment="CENTER" spacing="10" layoutX="50" layoutY="20"
+          style="-fx-background-color: white; -fx-padding: 20; -fx-border-radius: 10; -fx-background-radius: 10; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 10, 0, 0, 5);"
+          prefWidth="400" prefHeight="350">
+
+        <Label text="✏ Modifier le Tourisme" style="-fx-font-size: 20px; -fx-font-weight: bold;"/>
+
+        <TextField fx:id="nomField" promptText="Nom"/>
+        <ComboBox fx:id="typeComboBox" promptText="Type"/>  <!-- ✅ Added ComboBox -->
+        <TextField fx:id="locationField" promptText="Localisation"/>
+        <TextField fx:id="nbEtoilesField" promptText="Nombre d'étoiles (1-5)"/> <!-- ✅ Fixed ID -->
+        <TextField fx:id="contactField" promptText="Contact"/>
+        <TextField fx:id="priceField" promptText="Prix"/>
+
+        <Label fx:id="statusLabel" textFill="red"/>
+
+        <Button fx:id="updateTourismeButton" text="Mettre à jour"
+                style="-fx-background-color: #ffcc00; -fx-text-fill: black; -fx-font-size: 14px; -fx-padding: 10;"/>
+    </VBox>
+</AnchorPane>

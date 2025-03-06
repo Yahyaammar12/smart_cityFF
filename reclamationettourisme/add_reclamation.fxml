@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane prefHeight="526.0" prefWidth="491.0" style="-fx-background-color: linear-gradient(to right, #6dd5ed, #2193b0); -fx-padding: 30;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.tourismeEtReclamation.AddReclamationController">
+
+    <VBox alignment="CENTER" layoutX="85.0" layoutY="34.0" spacing="20">
+        <!-- ✅ Styled Card for Form -->
+        <VBox spacing="15" style="-fx-background-color: white; -fx-padding: 20; -fx-border-radius: 10;                                    -fx-background-radius: 10; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 15, 0, 0, 5);                                    -fx-alignment: center; -fx-pref-width: 400;">
+
+            <Label style="-fx-font-size: 20px; -fx-font-weight: bold;" text="⚠ Faire une Réclamation" />
+
+            <!-- ✅ Sujet Field with Validation -->
+            <VBox spacing="5">
+                <TextField fx:id="sujetField" promptText="Sujet" />
+                <Label fx:id="sujetError" style="-fx-text-fill: red; -fx-font-size: 12px;" text="" />
+            </VBox>
+
+            <!-- ✅ Description Field with Validation -->
+            <VBox spacing="5">
+                <TextArea fx:id="descriptionField" prefHeight="100" promptText="Décrivez votre problème" />
+                <Label fx:id="descriptionError" style="-fx-text-fill: red; -fx-font-size: 12px;" text="" />
+            </VBox>
+
+            <!-- ✅ Rating Slider -->
+            <VBox spacing="5">
+                <Label text="⭐ Évaluation" />
+                <Slider fx:id="ratingSlider" blockIncrement="1" majorTickUnit="1" max="5" min="1" snapToTicks="true" value="3" />
+            </VBox>
+
+            <CheckBox fx:id="solvedCheckBox" text="Résolu" disable="true" selected="false"/>
+
+            <!-- ✅ Buttons -->
+            <HBox alignment="CENTER" spacing="10">
+                <Button fx:id="submitButton" style="-fx-background-color: #4CAF50; -fx-text-fill: white;" text="Envoyer" />
+                <Button fx:id="cancelButton" style="-fx-background-color: #FF5722; -fx-text-fill: white;" text="Annuler" />
+            </HBox>
+
+            <!-- ✅ Status Label -->
+            <Label fx:id="statusLabel" style="-fx-font-size: 14px;" text="" />
+        </VBox>
+    </VBox>
+</AnchorPane>

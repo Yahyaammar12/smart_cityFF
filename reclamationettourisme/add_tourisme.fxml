@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.*?>
+<?import org.controlsfx.control.Rating?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="controllers.tourismeEtReclamation.AddTourismeController" prefHeight="500.0" prefWidth="600.0"
+            style="-fx-background-color: linear-gradient(to right, #6dd5ed, #2193b0);">
+
+    <VBox alignment="CENTER" spacing="10" layoutX="25" layoutY="25"
+          style="-fx-background-color: white; -fx-padding: 20; -fx-border-radius: 10; -fx-background-radius: 10; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 10, 0, 0, 5);"
+          prefWidth="550" prefHeight="450">
+
+        <Label text="🏨 Ajouter un Site Touristique"
+               style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+
+        <!-- Name Field -->
+        <TextField fx:id="nomField" promptText="Nom du site"/>
+        <Label fx:id="nomError" text="Le nom est obligatoire" visible="false" style="-fx-text-fill: red;"/>
+
+        <!-- Location Field -->
+        <TextField fx:id="locationField" promptText="Localisation"/>
+        <Label fx:id="locationError" text="La localisation est obligatoire" visible="false" style="-fx-text-fill: red;"/>
+
+        <!-- Contact Field -->
+        <TextField fx:id="contactField" promptText="Contact (📞)"/>
+        <Label fx:id="contactError" text="Le contact est incorrect" visible="false" style="-fx-text-fill: red;"/>
+
+        <!-- Price Field -->
+        <TextField fx:id="priceField" promptText="Prix 💰"/>
+        <Label fx:id="priceError" text="Le prix est invalide" visible="false" style="-fx-text-fill: red;"/>
+
+        <!-- Type Selection -->
+        <ComboBox fx:id="typeComboBox" promptText="Type de Tourisme"/>
+        <Label fx:id="typeError" text="Veuillez choisir un type" visible="false" style="-fx-text-fill: red;"/>
+
+        <!-- Rating Component (Replaced Old Stars) -->
+        <HBox alignment="CENTER">
+            <Label text="Évaluation :" style="-fx-font-size: 16px; -fx-text-fill: #333;"/>
+            <Rating fx:id="starRating" max="5" partialRating="false"/>
+        </HBox>
+
+        <Label fx:id="successMessage" text="" visible="false" style="-fx-text-fill: green;"/>
+
+        <!-- Action Buttons -->
+        <HBox spacing="15">
+            <Button fx:id="submitTourismeButton" text="Ajouter"
+                    style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-size: 14px; -fx-padding: 8;"/>
+            <Button fx:id="cancelButton" text="Annuler"
+                    style="-fx-background-color: #f44336; -fx-text-fill: white; -fx-font-size: 14px; -fx-padding: 8;"/>
+        </HBox>
+
+    </VBox>
+</AnchorPane>
