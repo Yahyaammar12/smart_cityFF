@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="500.0"
+            style="-fx-background-color: linear-gradient(to bottom right, #B2FEFA, #0ED2F7);"
+            xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="controllers.centreetresrvation.EditCentreController">
+
+    <VBox alignment="CENTER" spacing="15"
+          style="-fx-background-color: white; -fx-border-radius: 15; -fx-padding: 20; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 10, 0, 0, 5);">
+
+        <Label text="Modifier Centre Médical"
+               style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #007BFF;"/>
+
+        <Label text="Nom du Centre:"/>
+        <TextField fx:id="nomField" promptText="Entrez le nom du centre"/>
+        <Label fx:id="nomError" text="" style="-fx-text-fill: red; -fx-font-size: 12px;" visible="false"/>
+
+        <Label text="Type:"/>
+        <ComboBox fx:id="typeComboBox"/>
+        <Label fx:id="typeError" text="" style="-fx-text-fill: red; -fx-font-size: 12px;" visible="false"/>
+
+        <Label text="Localisation:"/>
+        <TextField fx:id="localisationField" promptText="Entrez la localisation"/>
+        <Label fx:id="localisationError" text="" style="-fx-text-fill: red; -fx-font-size: 12px;" visible="false"/>
+
+        <Label text="Disponibilité:"/>
+        <CheckBox fx:id="disponibiliteCheckBox" text="Disponible"/>
+
+        <Label fx:id="successMessage" text="Centre modifié avec succès !" style="-fx-text-fill: green; -fx-font-size: 12px;" visible="false"/>
+
+        <HBox spacing="10">
+            <Button fx:id="saveButton" text="💾 Sauvegarder"
+                    style="-fx-background-color: #2a9d8f; -fx-text-fill: white;"
+                    onAction="#handleSave"/>
+
+            <Button fx:id="cancelButton" text="❌ Annuler"
+                    style="-fx-background-color: #e63946; -fx-text-fill: white;"
+                    onAction="#handleCancel"/>
+        </HBox>
+    </VBox>
+</AnchorPane>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #B2EBF2;"
+            xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="controllers.centreetresrvation.ReservationController">
+    <!-- Sidebar -->
+    <fx:include source="/Layouts/UserSidebar.fxml"/>
+
+    <!-- Main Content -->
+    <VBox alignment="CENTER" layoutX="250.0" layoutY="50.0" prefHeight="500.0" prefWidth="550.0" spacing="15"
+          style="-fx-background-color: white; -fx-border-radius: 15; -fx-padding: 30; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 10, 0, 0, 5);">
+        <Label fx:id="centreNameLabel" style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #007BFF;"
+               text="Réservation pour Centre"/>
+        <Label text="Date de rendez-vous:"/>
+        <DatePicker fx:id="datePicker"/>
+        <Label text="Heure (HH:MM):"/>
+        <TextField fx:id="heureField" promptText="Ex: 14:30"/>
+        <Label text="Médecin:"/>
+        <ComboBox fx:id="medecinComboBox"/>
+        <Label text="Statut:"/>
+        <ComboBox fx:id="statusField" disable="true"/>
+        <Button fx:id="confirmButton" onAction="#handleReservation"
+                style="-fx-background-color: #007BFF; -fx-text-fill: white; -fx-border-radius: 5px; -fx-padding: 10;" text="Confirmer"/>
+    </VBox>
+</AnchorPane>

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.*?>
+
+<?import javafx.collections.FXCollections?>
+<?import java.lang.String?>
+<AnchorPane prefHeight="500.0" prefWidth="450.0"
+            style="-fx-background-color: linear-gradient(to bottom right, #B2FEFA, #0ED2F7);"
+            xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="controllers.centreetresrvation.EditReservationController">
+
+    <VBox alignment="CENTER" spacing="15" layoutX="50.0" layoutY="50.0"
+          style="-fx-background-color: white; -fx-border-radius: 15; -fx-padding: 20; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 10, 0, 0, 5);">
+
+        <children>
+            <!-- Title -->
+            <Label fx:id="titleLabel" text="Modifier la Réservation"
+                   style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #007BFF;"/>
+
+            <!-- Date Picker -->
+            <Label text="Date de rendez-vous:"/>
+            <DatePicker fx:id="datePicker"/>
+
+            <!-- Heure Field -->
+            <Label text="Heure (HH:MM):"/>
+            <TextField fx:id="heureField" promptText="Ex: 14:30"/>
+
+            <!-- Médecin Selection (Predefined in FXML) -->
+            <Label text="Médecin:"/>
+            <ComboBox fx:id="medecinComboBox">
+                <items>
+                    <FXCollections fx:factory="observableArrayList">
+                        <String fx:value="Dr. Fatma Sghaier"/>
+                        <String fx:value="Dr. Amine Ben Salah"/>
+                        <String fx:value="Dr. Rania Khaled"/>
+                        <String fx:value="Dr. Mohamed Trabelsi"/>
+                        <String fx:value="Dr. Sonia Ben Hassine"/>
+                    </FXCollections>
+                </items>
+            </ComboBox>
+
+            <!-- Statut Selection -->
+            <Label text="Statut:"/>
+            <ComboBox fx:id="statusField">
+                <items>
+                    <FXCollections fx:factory="observableArrayList">
+                        <String fx:value="En attente"/>
+                        <String fx:value="Confirmé"/>
+                        <String fx:value="Annulé"/>
+                    </FXCollections>
+                </items>
+            </ComboBox>
+
+            <!-- Button Controls -->
+            <HBox spacing="10" alignment="CENTER">
+                <Button fx:id="saveButton" text="💾 Sauvegarder"
+                        style="-fx-font-size: 14;
+                               -fx-font-weight: bold;
+                               -fx-background-color: #2a9d8f;
+                               -fx-text-fill: white;
+                               -fx-background-radius: 8;
+                               -fx-cursor: hand;
+                               -fx-pref-height: 36;
+                               -fx-pref-width: 140;
+                               -fx-alignment: center;"
+                        onAction="#handleSave"/>
+
+                <Button fx:id="cancelButton" text="❌ Annuler"
+                        style="-fx-font-size: 14;
+                               -fx-font-weight: bold;
+                               -fx-background-color: #e63946;
+                               -fx-text-fill: white;
+                               -fx-background-radius: 8;
+                               -fx-cursor: hand;
+                               -fx-pref-height: 36;
+                               -fx-pref-width: 140;
+                               -fx-alignment: center;"
+                        onAction="#handleCancel"/>
+            </HBox>
+        </children>
+    </VBox>
+</AnchorPane>

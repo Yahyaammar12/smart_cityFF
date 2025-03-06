@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="600.0" prefWidth="900.0"
+            style="-fx-background-color: linear-gradient(to bottom right, #B2FEFA, #0ED2F7);"
+            xmlns="http://javafx.com/javafx/20.0.1"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="controllers.centreetresrvation.CentreMedicaleListController">
+
+    <!-- ✅ Main Layout (Fixed Sidebar + Content) -->
+    <HBox spacing="15" alignment="CENTER_LEFT" prefHeight="600.0" prefWidth="900.0">
+
+        <!-- ✅ Sidebar (Full Height on Left) -->
+        <AnchorPane prefWidth="200.0" prefHeight="600.0" style="-fx-background-color: #2C3E50;">
+            <fx:include source="/Layouts/AdminSidebar.fxml"/>
+        </AnchorPane>
+
+        <!-- ✅ Main Content -->
+        <VBox spacing="15" prefHeight="580.0" prefWidth="680.0"
+              style="-fx-background-color: white; -fx-background-radius: 12; -fx-padding: 18; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.15), 10, 0, 0, 5);">
+
+            <!-- ✅ Header Section -->
+            <HBox prefHeight="60.0" alignment="CENTER_LEFT"
+                  style="-fx-background-color: #0ED2F7; -fx-background-radius: 12; -fx-padding: 10;">
+                <Label text="🏥 Liste des Centres Médicaux"
+                       style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: white;" />
+            </HBox>
+
+            <!-- ✅ Search & Filter Section -->
+            <HBox spacing="12" alignment="CENTER_LEFT" style="-fx-padding: 5 0;">
+                <TextField fx:id="searchField" promptText="🔍 Rechercher..."
+                           style="-fx-font-size: 14; -fx-padding: 8; -fx-background-radius: 8; -fx-pref-width: 200;" />
+                <Button fx:id="searchButton" text="🔍"
+                        styleClass="primary-button"/>
+
+                <Label text="Filtrer: " style="-fx-font-size: 14px; -fx-text-fill: #555;" />
+                <ComboBox fx:id="filterDisponibility" promptText="📌 Disponibilité"
+                          style="-fx-font-size: 13; -fx-padding: 6; -fx-background-radius: 6; -fx-pref-width: 140;" />
+                <ComboBox fx:id="filterType" promptText="🏥 Type"
+                          style="-fx-font-size: 13; -fx-padding: 6; -fx-background-radius: 6; -fx-pref-width: 140;" />
+            </HBox>
+
+            <!-- ✅ Table (Scrollable) -->
+            <ScrollPane fitToWidth="true" fitToHeight="true" prefHeight="380" prefWidth="660"
+                        style="-fx-background-color: transparent;">
+                <VBox prefHeight="380" prefWidth="660"
+                      style="-fx-background-color: white; -fx-border-radius: 12; -fx-padding: 12;">
+
+                    <TableView fx:id="centreTable" prefHeight="360.0">
+                        <columns>
+                            <TableColumn text="🏥 Nom" fx:id="colNom" prefWidth="150" />
+                            <TableColumn text="📍 Localisation" fx:id="colLocalisation" prefWidth="180" />
+                            <TableColumn text="🏷️ Type" fx:id="colType" prefWidth="120" />
+                            <TableColumn text="📌 Disponibilité" fx:id="colDisponibilite" prefWidth="140" />
+                        </columns>
+                    </TableView>
+                </VBox>
+            </ScrollPane>
+
+            <!-- ✅ Pagination Control -->
+            <Pagination fx:id="pagination" prefHeight="40" />
+
+            <!-- ✅ Buttons Section -->
+            <HBox spacing="12" alignment="CENTER">
+                <Button fx:id="refreshButton" text="🔄 Refresh"
+                        styleClass="info-button"/>
+                <Button fx:id="addButton" text="➕ Add"
+                        styleClass="success-button"/>
+                <Button fx:id="editButton" text="✏️ Update"
+                        styleClass="warning-button"/>
+                <Button fx:id="deleteButton" text="🗑️ Delete"
+                        styleClass="danger-button"/>
+            </HBox>
+
+        </VBox>
+    </HBox>
+
+</AnchorPane>

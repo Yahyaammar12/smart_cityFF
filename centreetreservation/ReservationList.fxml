@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.TextField?>
+<AnchorPane prefHeight="600.0" prefWidth="900.0"
+            style="-fx-background-color: linear-gradient(to bottom right, #B2FEFA, #0ED2F7);"
+            xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="controllers.centreetresrvation.ReservationListController">
+
+    <!-- Sidebar -->
+    <fx:include source="/Layouts/UserSidebar.fxml"/>
+
+    <!-- TOP NAV BAR -->
+    <HBox fx:id="topNavBar" layoutX="220.0" layoutY="0" prefHeight="60.0" prefWidth="680.0"
+          style="-fx-background-color: #0ED2F7; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 4, 0, 0, 2);">
+        <Label style="-fx-font-size: 18; -fx-font-weight: bold; -fx-text-fill: white; -fx-padding: 10 20 10 20;"
+               text="📋 Liste des Réservations"/>
+    </HBox>
+
+    <!-- MAIN CONTENT AREA -->
+    <VBox layoutX="250.0" layoutY="80.0" prefHeight="500.0" prefWidth="600.0" spacing="15"
+          style="-fx-background-color: white; -fx-background-radius: 12; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 8, 0, 0, 3); -fx-padding: 30;">
+        <HBox spacing="10">
+            <TextField fx:id="searchField" promptText="Rechercher par médecin..."
+                       style="-fx-pref-width: 250; -fx-font-size: 14; -fx-padding: 6;"/>
+            <DatePicker fx:id="datePicker" promptText="Filtrer par date"
+                        style="-fx-font-size: 14; -fx-pref-width: 200;"/>
+            <Button fx:id="clearFilterButton" text="✖ Effacer"
+                    style="-fx-background-color: #d9534f; -fx-text-fill: white; -fx-font-weight: bold; -fx-pref-width: 120;"/>
+        </HBox>
+
+        <Label style="-fx-font-size: 20; -fx-font-weight: bold; -fx-text-fill: #333;" text="Vos Réservations"/>
+        <Label style="-fx-font-size: 13; -fx-text-fill: #666;" text="Toutes vos réservations."/>
+
+        <TableView fx:id="reservationTableView" prefHeight="300.0" prefWidth="560.0">
+            <columns>
+                <TableColumn fx:id="dateColumn" text="Date" prefWidth="120.0">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="date"/>
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn fx:id="heureColumn" text="Heure" prefWidth="120.0">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="heure"/>
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn fx:id="medecinColumn" text="Médecin" prefWidth="150.0">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="nomMedecin"/>
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn fx:id="statusColumn" text="Statut" prefWidth="120.0">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="status"/>
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn fx:id="idColumn" text="ID" prefWidth="80.0">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="id"/>
+                    </cellValueFactory>
+                </TableColumn>
+            </columns>
+        </TableView>
+
+        <HBox alignment="CENTER" spacing="10">
+            <Button fx:id="refreshButton" style="-fx-background-color: #2a9d8f; -fx-text-fill: white;"
+                    text="🔄 Rafraîchir la Liste"/>
+            <Button fx:id="editButton" style="-fx-background-color: #f4a261; -fx-text-fill: white;" text="✏️ Modifier"/>
+            <Button fx:id="deleteButton" style="-fx-background-color: #e63946; -fx-text-fill: white;"
+                    text="🗑️ Supprimer"/>
+            <Button fx:id="exportPdfButton" text="📄 Exporter PDF"
+                    style="-fx-background-color: #ff9800; -fx-text-fill: white; -fx-font-weight: bold;"
+                    onAction="#exportSelectedToPDF"/>
+
+        </HBox>
+    </VBox>
+</AnchorPane>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.*?>
+<?import javafx.collections.FXCollections?>
+<?import java.lang.String?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/8"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="controllers.centreetresrvation.AddCentre"
+            prefWidth="700" prefHeight="500"
+            style="-fx-background-color: linear-gradient(to bottom, #84EFFE, #ffffff);">
+
+    <!-- Main Container Centered -->
+    <VBox spacing="20" alignment="CENTER" AnchorPane.topAnchor="20" AnchorPane.leftAnchor="50" AnchorPane.rightAnchor="50">
+        <padding>
+            <Insets top="20" right="20" bottom="20" left="20"/>
+        </padding>
+
+        <!-- Form Card -->
+        <VBox spacing="15" alignment="CENTER" style="-fx-background-color: white; -fx-padding: 20; -fx-border-radius: 10; -fx-background-radius: 10; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 10, 0, 0, 5);">
+
+            <!-- Title -->
+            <Label text="Ajouter un Centre Médical" style="-fx-font-size: 20px; -fx-font-weight: bold;"/>
+
+            <!-- Instructions -->
+            <Label text="Veuillez renseigner les informations ci-dessous :" style="-fx-font-size: 14px; -fx-text-fill: #666;"/>
+
+            <!-- Nom -->
+            <VBox spacing="5">
+                <Label text="Nom du Centre"/>
+                <TextField fx:id="nomField" promptText="Ex: Centre Santé Plus" style="-fx-pref-width: 300px;"/>
+                <Label fx:id="nomError" text="Nom invalide !" style="-fx-text-fill: red; -fx-font-size: 12px;" visible="false"/>
+            </VBox>
+
+            <!-- Type -->
+            <VBox spacing="5">
+                <Label text="Type"/>
+                <ComboBox fx:id="typeField">
+                    <items>
+                        <FXCollections fx:factory="observableArrayList">
+                            <String fx:value="CLINIC"/>
+                            <String fx:value="HOSPITAL"/>
+                            <String fx:value="PHARMACY"/>
+                        </FXCollections>
+                    </items>
+                </ComboBox>
+                <Label fx:id="typeError" text="Type invalide !" style="-fx-text-fill: red; -fx-font-size: 12px;" visible="false"/>
+            </VBox>
+
+            <!-- Localisation -->
+            <VBox spacing="5">
+                <Label text="Localisation"/>
+                <TextField fx:id="localisationField" promptText="Ex: Tunis, Avenue Habib Bourguiba" style="-fx-pref-width: 300px;"/>
+                <Label fx:id="localisationError" text="Localisation invalide !" style="-fx-text-fill: red; -fx-font-size: 12px;" visible="false"/>
+            </VBox>
+
+            <!-- Disponibilité -->
+            <VBox spacing="5">
+                <Label text="Disponibilité"/>
+                <CheckBox fx:id="disponibiliteField" text="Disponible"/>
+            </VBox>
+
+            <!-- Buttons -->
+            <HBox spacing="10" alignment="CENTER">
+                <Button fx:id="addButton" text="Ajouter" style="-fx-background-color: #00C853; -fx-text-fill: white; -fx-font-size: 14px; -fx-border-radius: 5px; -fx-background-radius: 5px;" />
+                <Button fx:id="cancelButton" text="Annuler" style="-fx-background-color: #e63946; -fx-text-fill: white; -fx-font-size: 14px; -fx-border-radius: 5px; -fx-background-radius: 5px;" />
+            </HBox>
+
+            <!-- Success Message -->
+            <Label fx:id="successMessage" text="Centre ajouté avec succès !" style="-fx-text-fill: green; -fx-font-size: 14px;" visible="false"/>
+        </VBox>
+    </VBox>
+</AnchorPane>

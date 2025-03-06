@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="600.0" prefWidth="900.0"
+            style="-fx-background-color: linear-gradient(to bottom right, #B2FEFA, #0ED2F7);"
+            xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="controllers.centreetresrvation.CentreMedicaleController">
+
+    <!-- ✅ Sidebar (Fixed to the Left) -->
+    <AnchorPane fx:id="sidebar" prefWidth="200.0" prefHeight="600.0" style="-fx-background-color: #2C3E50;">
+        <fx:include source="/Layouts/UserSidebar.fxml"/>
+    </AnchorPane>
+
+    <!-- ✅ Top Navbar (Anchored at the Top) -->
+    <HBox fx:id="topNavBar" prefHeight="60.0" layoutX="200.0"
+          style="-fx-background-color: #0ED2F7; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 4, 0, 0, 2);">
+        <children>
+            <Label style="-fx-font-size: 18; -fx-font-weight: bold; -fx-text-fill: white; -fx-padding: 10 20 10 20;"
+                   text="🏥 Centres Médicaux"/>
+        </children>
+    </HBox>
+
+    <!-- ✅ Main Content (Starts After Sidebar) -->
+    <AnchorPane layoutX="200.0" prefWidth="700.0" prefHeight="540.0" layoutY="60.0">
+        <VBox alignment="CENTER" spacing="12.0"
+              style="-fx-background-color: white; -fx-background-radius: 12; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 8, 0, 0, 3); -fx-padding: 20;">
+
+            <children>
+                <!-- Title / Subtext -->
+                <Label style="-fx-font-size: 20; -fx-font-weight: bold; -fx-text-fill: #333;"
+                       text="Liste des Centres Médicaux"/>
+                <Label style="-fx-font-size: 13; -fx-text-fill: #666;"
+                       text="Tous les centres médicaux disponibles en base de données."/>
+
+                <!-- 🔎 Search Bar -->
+                <TextField fx:id="searchField" promptText="🔍 Rechercher par nom ou localisation"
+                           style="-fx-font-size: 14; -fx-padding: 8; -fx-border-radius: 5; -fx-border-color: #ddd;"/>
+
+                <!-- FlowPane for Centre Medical Cards -->
+                <ScrollPane fitToHeight="true" fitToWidth="true" style="-fx-background: transparent;">
+                    <FlowPane fx:id="cardContainer" hgap="16" prefWrapLength="650" style="-fx-padding: 10;"
+                              styleClass="card" stylesheets="@../styles.css" vgap="16"/>
+                </ScrollPane>
+
+                <!-- Refresh Button -->
+                <Button fx:id="refreshButton"
+                        style="-fx-font-size: 14; -fx-font-weight: bold; -fx-background-color: #2a9d8f; -fx-text-fill: white; -fx-background-radius: 8; -fx-cursor: hand; -fx-pref-height: 36; -fx-pref-width: 220; -fx-alignment: center;"
+                        text="Rafraîchir la Liste"/>
+            </children>
+        </VBox>
+    </AnchorPane>
+
+</AnchorPane>
