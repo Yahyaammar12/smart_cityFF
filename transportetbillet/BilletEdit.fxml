@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.*?>
+
+<?import javafx.collections.FXCollections?>
+<?import java.lang.String?>
+<AnchorPane xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="controllers.transportetbillet.BilletEditController" prefHeight="400.0" prefWidth="600.0"
+            style="-fx-background-color: linear-gradient(to right, #6dd5ed, #2193b0);">
+
+    <VBox alignment="CENTER" spacing="20" style="-fx-padding: 20; -fx-background-color: white; -fx-border-radius: 15; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 10, 0, 0, 5);">
+
+        <Label text="✏ Modifier Billet" style="-fx-font-size: 22; -fx-font-weight: bold; -fx-text-fill: #007ACC;"/>
+
+        <Label text="📅 Date de voyage:" />
+        <DatePicker fx:id="dateVoyagePicker"/>
+
+        <Label text="💰 Prix (TND):" />
+        <TextField fx:id="prixField" promptText="Prix défini automatiquement" style="-fx-pref-width: 250;" disable="true"/>
+
+        <Label text="✅ Statut:" />
+        <ChoiceBox fx:id="statusBox">
+            <items>
+                <FXCollections fx:factory="observableArrayList">
+                    <String fx:value="CONFIRMED"/>
+                    <String fx:value="CANCELLED"/>
+                </FXCollections>
+            </items>
+        </ChoiceBox>
+
+        <Label text="💳 Paiement:" />
+        <ChoiceBox fx:id="paymentBox">
+            <items>
+                <FXCollections fx:factory="observableArrayList">
+                    <String fx:value="CARD"/>
+                    <String fx:value="CASH"/>
+                </FXCollections>
+            </items>
+        </ChoiceBox>
+
+        <HBox spacing="10">
+            <Button text="✔ Sauvegarder" fx:id="saveButton" onAction="#handleSave"/>
+            <Button text="❌ Annuler" onAction="#handleCancel"/>
+        </HBox>
+
+    </VBox>
+
+</AnchorPane>

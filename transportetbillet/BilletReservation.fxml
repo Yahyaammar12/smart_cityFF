@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane prefHeight="444.0" prefWidth="466.0" style="-fx-background-color: #87CEEB;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.transportetbillet.BilletReservationController"> <!-- Sky Blue Background -->
+
+    <VBox alignment="CENTER" spacing="20" style="-fx-padding: 20;">
+   
+           <!-- Card Layout -->
+        <VBox alignment="CENTER" spacing="15" style="-fx-background-color: white;                      -fx-border-radius: 15;                      -fx-padding: 25;                      -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.15), 10, 0, 0, 5);                      -fx-min-width: 420;                      -fx-max-width: 420;" styleClass="card" stylesheets="@../styles.css">
+   
+               <Label style="-fx-font-size: 24; -fx-font-weight: bold; -fx-text-fill: #007ACC;" text="🎟 Réserver un Billet" />
+   
+               <Label style="-fx-font-weight: bold;" text="📅 Date de voyage:" />
+            <DatePicker fx:id="dateVoyagePicker" style="-fx-pref-width: 250;" />
+   
+               <Label style="-fx-font-weight: bold;" text="💰 Prix (TND):" />
+            <TextField fx:id="prixField" promptText="Entrez le prix" style="-fx-pref-width: 250;" />
+   
+
+   
+               <Label style="-fx-font-weight: bold;" text="💳 Paiement:" />
+            <ChoiceBox fx:id="paymentBox" style="-fx-pref-width: 250;">
+                <items>
+                    <FXCollections fx:factory="observableArrayList">
+                        <String fx:value="CARD" />
+                        <String fx:value="CASH" />
+                    </FXCollections>
+                </items>
+            </ChoiceBox>
+   
+               <Label fx:id="errorLabel" style="-fx-font-weight: bold;" textFill="red" />
+   
+               <!-- Buttons -->
+            <HBox alignment="CENTER" spacing="15">
+                <Button fx:id="confirmButton" onAction="#handleReservation" style="-fx-background-color: #28a745;                                -fx-text-fill: white;                                -fx-font-size: 14;                                -fx-border-radius: 10;                                -fx-padding: 10 20;" text="✔ Confirmer" />
+   
+                   <Button onAction="#handleCancel" style="-fx-background-color: #e63946;                                -fx-text-fill: white;                                -fx-font-size: 14;                                -fx-border-radius: 10;                                -fx-padding: 10 20;" text="❌ Annuler" />
+            </HBox>
+   
+           </VBox> <!-- End of Card -->
+    </VBox>
+
+</AnchorPane>

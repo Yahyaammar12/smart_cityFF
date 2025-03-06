@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane prefHeight="500.0" prefWidth="600.0" style="-fx-background-color: linear-gradient(to right, #6dd5ed, #2193b0);" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.transportetbillet.EditTransportController">
+
+    <VBox alignment="CENTER" spacing="20" style="-fx-padding: 20; -fx-background-radius: 12;">
+
+        <Label style="-fx-font-size: 22; -fx-font-weight: bold; -fx-text-fill: #FFFFFF;" text="✏️ Modifier Transport" />
+
+        <VBox prefHeight="402.0" prefWidth="500" spacing="10" style="-fx-background-color: white; -fx-border-radius: 12; -fx-padding: 15;                                  -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 10, 0, 0, 4);" styleClass="card" stylesheets="@../styles.css">
+
+            <!-- Transport Type -->
+            <HBox spacing="10">
+                <Label text="🚌 Type:" />
+                <ComboBox fx:id="typeComboBox">
+                    <items>
+                        <FXCollections fx:factory="observableArrayList">
+                            <String fx:value="BUS" />
+                            <String fx:value="TRAIN" />
+                            <String fx:value="FLIGHT" />
+                        </FXCollections>
+                    </items>
+                </ComboBox>
+            </HBox>
+
+            <!-- Company -->
+            <HBox spacing="10">
+                <Label text="🏢 Compagnie:" />
+                <TextField fx:id="companyField" promptText="Saisir la compagnie" />
+            </HBox>
+
+            <!-- Departure & Destination -->
+            <HBox spacing="10">
+                <Label text="🚏 Départ:" />
+                <TextField fx:id="departField" promptText="Ville de départ" />
+                <Label text="➡ Destination:" />
+                <TextField fx:id="destinationField" promptText="Ville d'arrivée" />
+            </HBox>
+
+            <!-- Horaire -->
+            <HBox spacing="10">
+                <Label text="⏰ Horaire:" />
+                <TextField fx:id="horaireField" promptText="Ex: 08:00 - 10:00" />
+            </HBox>
+
+            <!-- Tarif -->
+            <HBox spacing="10">
+                <Label text="💰 Tarif:" />
+                <TextField fx:id="tarifField" promptText="Prix en TND" />
+            </HBox>
+
+            <!-- Places Disponibles -->
+            <HBox spacing="10">
+                <Label text="🪑 Places libres:" />
+                <TextField fx:id="placesField" promptText="Nombre de places disponibles" />
+            </HBox>
+
+            <!-- Buttons -->
+            <HBox spacing="10">
+                <Button fx:id="saveButton" onAction="#saveTransport" style="-fx-background-color: #2a9d8f; -fx-text-fill: white; -fx-border-radius: 8;" text="💾 Enregistrer" />
+
+                <Button fx:id="cancelButton" onAction="#closeWindow" style="-fx-background-color: #e63946; -fx-text-fill: white; -fx-border-radius: 8;" text="❌ Annuler" />
+            </HBox>
+
+        </VBox>
+
+    </VBox>
+
+</AnchorPane>

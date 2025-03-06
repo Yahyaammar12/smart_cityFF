@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="600.0" prefWidth="800.0"
+            style="-fx-background-color: linear-gradient(to right, #6dd5ed, #2193b0);"
+            xmlns="http://javafx.com/javafx/20.0.1"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="controllers.transportetbillet.TransportCatalogue">
+
+    <!-- ✅ Sidebar (Fixed to the Left) -->
+    <AnchorPane fx:id="sidebar" prefWidth="200.0" prefHeight="600.0"
+                style="-fx-background-color: #2C3E50;">
+        <fx:include source="/Layouts/UserSidebar.fxml"/>
+    </AnchorPane>
+
+    <!-- ✅ Main Content -->
+    <AnchorPane layoutX="220.0" prefWidth="580.0" prefHeight="580.0">
+        <VBox alignment="CENTER" spacing="15" style="-fx-padding: 15; -fx-background-radius: 12;">
+
+            <!-- 🚆 Page Title -->
+            <Label style="-fx-font-size: 22; -fx-font-weight: bold; -fx-text-fill: #FFFFFF;"
+                   text="🚆 Catalogue des Transports"/>
+
+            <!-- 🔍 Search Fields -->
+            <HBox spacing="10">
+                <TextField fx:id="searchType" promptText="Type" prefWidth="100"/>
+                <TextField fx:id="searchCompany" promptText="Compagnie" prefWidth="120"/>
+                <TextField fx:id="searchDepart" promptText="Départ" prefWidth="100"/>
+                <TextField fx:id="searchDestination" promptText="Destination" prefWidth="100"/>
+                <TextField fx:id="searchSchedule" promptText="Horaire" prefWidth="80"/>
+                <Button fx:id="searchButton" text="🔎" onAction="#searchTransports"
+                        style="-fx-background-radius: 8;"/>
+            </HBox>
+
+            <!-- 📜 Scrollable List -->
+            <ScrollPane fitToWidth="true" prefHeight="400" prefWidth="580.0">
+                <VBox fx:id="transportContainer" spacing="15"
+                      style="-fx-background-color: transparent; -fx-padding: 15;"/>
+            </ScrollPane>
+
+            <!-- 🌤 Weather Button -->
+            <Button text="🌤 Voir la météo" fx:id="weatherButton"
+                    style="-fx-background-color: #ff9800; -fx-text-fill: white; -fx-font-size: 16; -fx-padding: 10;"
+                    onAction="#goToWeatherPage"/>
+
+        </VBox>
+    </AnchorPane>
+
+</AnchorPane>
