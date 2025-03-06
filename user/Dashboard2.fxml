@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.BubbleChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.chart.ScatterChart?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane prefHeight="698.0" prefWidth="1364.0" style="-fx-background-color: #ecf0f1;" styleClass="card" stylesheets="@../styles.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.dashboards.Dashboard2Controller">
+
+    <!-- Sidebar -->
+    <VBox layoutX="0" layoutY="0" prefHeight="691.0" prefWidth="202.0" spacing="15" style="-fx-background-color: #2c3e50; -fx-padding: 15;" styleClass="card" stylesheets="@../styles.css">
+
+        <!-- User Info Section -->
+        <VBox fx:id="userInfoBox" alignment="CENTER" spacing="5" style="-fx-background-color: #34495e; -fx-padding: 15; -fx-border-radius: 12;">
+            <Label fx:id="userNameLabel" style="-fx-text-fill: white; -fx-font-size: 16px; -fx-font-weight: bold;" text="User Name" />
+            <Label fx:id="userStatusLabel" style="-fx-font-size: 14px; -fx-text-fill: #2ecc71;" text="Active" />
+        </VBox>
+
+        <!-- Sidebar Buttons -->
+        <Label style="-fx-text-fill: white; -fx-font-size: 18px; -fx-font-weight: bold; -fx-padding: 5;" text="Admin Panel" />
+        <Button styleClass="sidebar-button" text="📄 User Management" />
+        <Button styleClass="sidebar-button" text="📄 stat1 Management" />
+        <Button styleClass="sidebar-button" text="📄 stat2 Management" />
+        <Button styleClass="sidebar-button" text="📑 Reservations" />
+        <Button styleClass="sidebar-button" text="🚕 Transport Services" />
+        <Button styleClass="sidebar-button" text="📊 Reports" />
+        <Button styleClass="sidebar-button" text="📊 go back to dash " onAction="#redirectToDashboardmain" />
+
+        <!-- Push Logout Button to the Bottom -->
+        <VBox />
+
+        <!-- Logout Button -->
+        <VBox alignment="CENTER" style="-fx-padding: 10;">
+            <Button fx:id="logoutButton" style="-fx-background-color: #e74c3c; -fx-text-fill: white; -fx-font-weight: bold; -fx-border-radius: 10;" text="🚪 Logout" />
+        </VBox>
+    </VBox>
+
+    <!-- Dashboard Content -->
+    <VBox layoutX="220.0" layoutY="16.0" spacing="30">
+
+        <!-- FIRST ROW -->
+        <HBox alignment="CENTER" spacing="30">
+            <VBox prefHeight="278.0" prefWidth="350.0" spacing="20" style="-fx-padding: 20; -fx-background-color: white; -fx-border-radius: 12; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 10, 0, 0, 5);" styleClass="card" stylesheets="@../styles.css">
+                <Label style="-fx-font-size: 18px; -fx-font-weight: bold;" text="⚠️ Reclamations Per Tourism Site" />
+                <BarChart fx:id="reclamationsBarChart" prefHeight="250.0" prefWidth="350.0">
+                    <xAxis><CategoryAxis label="Tourism Site" /></xAxis>
+                    <yAxis><NumberAxis label="Total Reclamations" /></yAxis>
+                </BarChart>
+            </VBox>
+
+            <VBox prefHeight="278.0" prefWidth="350.0" spacing="20" style="-fx-padding: 20; -fx-background-color: white; -fx-border-radius: 12; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 10, 0, 0, 5);" styleClass="card" stylesheets="@../styles.css">
+                <Label style="-fx-font-size: 18px; -fx-font-weight: bold;" text="⭐ Average Ratings Per Tourism Site" />
+                <ScatterChart fx:id="tourismRatingsChart" prefHeight="250.0" prefWidth="350.0">
+                    <xAxis><CategoryAxis label="Tourism Site" /></xAxis>
+                    <yAxis><NumberAxis label="Average Rating" /></yAxis>
+                </ScatterChart>
+            </VBox>
+
+            <VBox prefHeight="278.0" prefWidth="350.0" spacing="20" style="-fx-padding: 20; -fx-background-color: white; -fx-border-radius: 12; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 10, 0, 0, 5);" styleClass="card" stylesheets="@../styles.css">
+                <Label style="-fx-font-size: 18px; -fx-font-weight: bold;" text="💰 Revenue Per Transport Company" />
+                <PieChart fx:id="revenueTransportChart" prefHeight="250.0" prefWidth="350.0" />
+            </VBox>
+        </HBox>
+
+        <!-- SECOND ROW -->
+        <HBox alignment="CENTER" spacing="30" stylesheets="@../styles.css">
+            <VBox prefHeight="278.0" prefWidth="350.0" spacing="20" style="-fx-padding: 20; -fx-background-color: white; -fx-border-radius: 12; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 10, 0, 0, 5);" styleClass="card" stylesheets="@../styles.css">
+                <Label style="-fx-font-size: 18px; -fx-font-weight: bold;" text="⭐ Ratings by Price Stars" />
+                <BubbleChart fx:id="tourismBubbleChart" prefHeight="250.0" prefWidth="350.0">
+                    <xAxis><NumberAxis label="Price (in USD)" /></xAxis>
+                    <yAxis><NumberAxis label="Average Rating" /></yAxis>
+                </BubbleChart>
+            </VBox>
+
+            <VBox prefHeight="278.0" prefWidth="350.0" spacing="20" style="-fx-padding: 20; -fx-background-color: white; -fx-border-radius: 12; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 10, 0, 0, 5);" styleClass="card" stylesheets="@../styles.css">
+                <Label style="-fx-font-size: 18px; -fx-font-weight: bold;" text="📈 Reclamations Trend Over Time" />
+                <LineChart fx:id="reclamationsTrendChart" prefHeight="250.0" prefWidth="350.0" stylesheets="@../styles.css">
+                    <xAxis><CategoryAxis label="Month" /></xAxis>
+                    <yAxis><NumberAxis label="Total Reclamations" /></yAxis>
+                </LineChart>
+            </VBox>
+
+            <VBox prefHeight="278.0" prefWidth="350.0" spacing="20" style="-fx-padding: 20; -fx-background-color: white; -fx-border-radius: 12; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 10, 0, 0, 5);" styleClass="card" stylesheets="@../styles.css">
+                <Label style="-fx-font-size: 18px; -fx-font-weight: bold;" text="🚗 Transport Utilization Rate" />
+                <BarChart fx:id="transportUtilizationChart" prefHeight="250.0" prefWidth="350.0">
+                    <xAxis><CategoryAxis label="Transport Type" /></xAxis>
+                    <yAxis><NumberAxis label="Utilization Rate (%)" /></yAxis>
+                </BarChart>
+            </VBox>
+        </HBox>
+
+    </VBox>
+
+</AnchorPane>

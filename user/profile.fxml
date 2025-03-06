@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane prefHeight="600.0" prefWidth="900.0" styleClass="background" stylesheets="@../styles.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.user.ProfileController">
+
+    <!-- Sidebar -->
+    <AnchorPane fx:id="sidebar" prefWidth="200.0" prefHeight="600.0" style="-fx-background-color: #2C3E50;">
+        <fx:include source="../Layouts/UserSidebar.fxml"/>
+    </AnchorPane>
+
+    <!-- Navbar User Info -->
+    <VBox layoutX="250" layoutY="20" spacing="10">
+        <ImageView fx:id="navbarProfilePic" fitHeight="50" fitWidth="50" />
+        <Label fx:id="navbarUserLabel" style="-fx-font-size: 16px; -fx-text-fill: white;" text="User Name" />
+    </VBox>
+
+    <!-- Main Content -->
+    <VBox layoutX="250" layoutY="80" spacing="20" style="-fx-alignment: center;">
+
+        <!-- Profile Card -->
+        <VBox prefHeight="502.0" prefWidth="640.0" styleClass="profile-card" stylesheets="@../styles.css">
+
+            <ImageView fx:id="profileImageView" fitHeight="90" fitWidth="90" styleClass="profile-image" />
+            <Label fx:id="nameLabel" styleClass="profile-name" />
+            <Label fx:id="emailLabel" styleClass="profile-email" />
+            <Label fx:id="roleLabel" styleClass="profile-role" />
+            <Label fx:id="numCarteLabel" styleClass="profile-details" />
+            <Label fx:id="adresseLabel" styleClass="profile-details" />
+
+            <!-- Status -->
+            <Label fx:id="statusLabel" styleClass="profile-status" />
+
+            <HBox spacing="10" style="-fx-alignment: center;">
+                <Button fx:id="editProfileButton" styleClass="edit-button" text="✏ Edit Profile" />
+                <Button fx:id="logoutButton" styleClass="logout-button" text="🚪 Logout" />
+            </HBox>
+
+        </VBox>
+
+    </VBox>
+
+</AnchorPane>
